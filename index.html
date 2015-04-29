@@ -13,6 +13,9 @@
 	<!--coded CSS and javascript-->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="js/app.js"></script>
+	<!--font-->
+	<link href='http://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Coming+Soon' rel='stylesheet' type='text/css'>
 	<title>Dr. Seuss Quiz</title>
 </head>
 
@@ -24,54 +27,60 @@
 	<div class="container">
 		<div class="quiz">
 			<div class="quote">
-				<h2>Today was good. Today was fun. Tomorrow is another one.</h2>
+				<h2>"Today was good. Today was fun. Tomorrow is another one."</h2>
 			</div>
 			<div class="possOptions">
 				<h3>This quote is from:</h3>
 				<div class="row">
-					<div class="col-md-2 empty">
-					</div>
-					<div class="col-md-2 col-xs-6">
+					
+					<div class="col-lg-2 col-lg-offset-2 col-sm-6">
 						<img src="images/IfIRanTheZoo-cover.jpg" class="option">
 					</div>
 
-					<div class="col-md-2 col-xs-6">
+					<div class="col-lg-2 col-sm-6">
 						<img src="images/HowTheGrinchStoleChristmas-cover.jpg" class="option">
 					</div>
 
-					<div class="col-md-2 col-xs-6">
+					<div class="col-lg-2 col-sm-6">
 						<img src="images/OneFishTwoFish.jpg" class="option">
 					</div>
 
-					<div class="col-md-2 col-xs-6">
+					<div class="col-lg-2 col-sm-6">
 						<img src="images/MrBrownCanMoo-cover.jpg" class="option">
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-10 ansProgress">
-					<div class="col-md-2">
-						<img src="images/TheCatInTheHat.jpg" class="answer">
-					</div>
+			<div>
+				<p class="counter">2 of 3 correct!</p>
+				<div class="row">
+					<div class="col-md-10 ansProgress">
+						<div class="col-md-2">
+							<img src="images/TheCatInTheHat.jpg" class="answer">
+						</div>
 
-					<div class="col-md-2">
-						<img src="images/GreenEggsandHam-cover.jpg" class="answer">
-					</div>
+						<div class="col-md-2">
+							<img src="images/GreenEggsandHam-cover.jpg" class="answer">
+						</div>
 
-					<div class="col-md-2">
-						<img src="images/OhThePlaces-cover.jpg" class="answer">
-					</div>
+						<div class="col-md-2">
+							<div>
+								<div class="incorrect">
+									<img src="images/OhThePlaces-cover.jpg" class="answer" id="fade">
+								</div>
+							</div>
+						</div>
 
-					<div class="col-md-2">
-						<img src="images/OneFishTwoFish.jpg" class="answer">
-					</div>
+						<div class="col-md-2">
+							<img src="images/OneFishTwoFish.jpg" class="answer hidden">
+						</div>
 
-					<div class="col-md-2">
-						<img src="images/HappyBirthday-cover.jpg" class="answer">
-					</div>
+						<div class="col-md-2">
+							<img src="images/HappyBirthday-cover.jpg" class="answer hidden">
+						</div>
 
-					<div class="col-md-2">
-						<img src="images/HortonHearsAWho-cover.jpg" class="answer">
+						<div class="col-md-2">
+							<img src="images/HortonHearsAWho-cover.jpg" class="answer hidden">
+						</div>
 					</div>
 				</div>
 			</div>
