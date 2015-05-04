@@ -4,11 +4,11 @@ $(document).ready(function(){
 	$('.feedBackNeg').hide();
 	$('.nextQuestion').hide();
 	$('.question-1').show();
-	// $('.question-2').hide();
-	// $('.question-3').hide();
-	// $('.question-4').hide();
-	// $('.question-5').hide();
-	// $('.question-6').hide();
+	$('.question-2').hide();
+	$('.question-3').hide();
+	$('.question-4').hide();
+	$('.question-5').hide();
+	$('.question-6').hide();
 
 //evaluate if correct answer is clicked
 	function evaluateGuess1(){
@@ -18,8 +18,7 @@ $(document).ready(function(){
 			var counter = document.getElementById('count');
 	    	counter.innerHTML++;
 	    	$('.feedBackPos').show();
-	    	$('.nextQuestion').show()
-	});
+	    	$('.nextQuestion').show();
 		});
 		$('.incorrect').click(function(){
 			console.log('NOOOO');
@@ -31,11 +30,22 @@ $(document).ready(function(){
 	
 	evaluateGuess1();
 
-	// $('.nextQuestion').on("click", (function(){
-	// 	$('.question-1').hide();
-	// 	$('.question-2').show();
-	// });
+	function loadNext(){
+		$('.feedBack').on('click','.nextQuestion',function(event){
+			console.log("WHAT");
+			$('.question-1').hide();
+			$('.question-2').show();
+			$('.feedBackPos').hide();
+			$('.feedBackNeg').hide();
+		    $('.nextQuestion').hide();
+		});
+	};
 
+	loadNext();
+
+
+
+	
 
 //show correct answer in progress bar
 
