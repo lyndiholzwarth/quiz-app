@@ -28,83 +28,130 @@
 		<div class="quiz">
 			<div class="quote">
 				<h2 class="question-1">"I know it is wet and the sun is not sunny, but we can have lots of good fun that is funny."</h2>
-				<h2 class="question-2">"Try them, try them, and you may! Try them and you may, I say."</h2>
+				<!--<h2 class="question-2">"Try them, try them, and you may! Try them and you may, I say."</h2>
 				<h2 class="question-3">"You have brains in your head. You have feet in your shoes. You can steer yourself any direction you choose."</h2>
 				<h2 class="question-4">"Today was good. Today was fun. Tomorrow is another one."</h2>
 				<h2 class="question-5">"Today you are You, that is truer than true. There is no one alive who is Youer than You."</h2>
-				<h2 class="question-6">"A person's a person, no matter how small."</h2>
+				<h2 class="question-6">"A person's a person, no matter how small."</h2>-->
 			</div>
 			<div class="possOptions">
 				<h3>This quote is from:</h3>
-				<div class="row">
-					
+				<div class="row question-1" id="questionOne">
 					<div class="col-lg-2 col-lg-offset-2 col-sm-6">
-						<img src="images/BartholomewAndTheOobleck-cover.jpg" class="option question-1">
+						<img src="images/BartholomewAndTheOobleck-cover.jpg" class="option incorrect">
+					</div>	
+					<div class="col-lg-2 col-sm-6">
+						<img src="images/TheCatInTheHat.jpg" class="option" id="correct-1">
+					</div>	
+					<div class="col-lg-2 col-sm-6">
+						<img src="images/McElligotsPool-cover.jpg" class="option incorrect">
+					</div>	
+					<div class="col-lg-2 col-sm-6">
+						<img src="images/TheresAWocketInMyPocket-cover.jpg" class="option incorrect">
+					</div>
+				</div>	
+				<!--<div class="row question-2">
+					<div class="col-lg-2 col-lg-offset-2 col-sm-6">
 						<img src="images/DidIEverTellYou-cover.jpg" class="option question-2">
-						<img src="images/OhThePlaces-cover.jpg" class="option question-3">
-						<img src="images/IfIRanTheZoo-cover.jpg" class="option question-4">
-						<img src="images/Daisy-HeadMayzie-cover.jpg" class="option question-5">
-						<img src="images/AndToThinkThatISawIt-cover.jpg" class="option question-6">
-					</div>
-
+					</div>	
 					<div class="col-lg-2 col-sm-6">
-						<img src="images/TheCatInTheHat.jpg" class="option question-1">
 						<img src="images/FoxInSocks-cover.jpg" class="option question-2">
-						<img src="images/ICanReadWithMyEyesShut-cover.jpg" class="option question-3">
-						<img src="images/HowTheGrinchStoleChristmas-cover.jpg" class="option question-4">
-						<img src="images/HortonHatchesTheEgg-cover.jpg" class="option question-5">
-						<img src="images/IfIRanTheCircus-cover.jpg" class="option question-6">
-					</div>
-
+					</div>	
 					<div class="col-lg-2 col-sm-6">
-						<img src="images/McElligotsPool-cover.jpg" class="option question-1">
 						<img src="images/OhSayCanYouSay-cover.jpg" class="option question-2">
-						<img src="images/TheFootBook-cover.jpg" class="option question-3">
-						<img src="images/OneFishTwoFish.jpg" class="option question-4">
-						<img src="images/HappyBirthday-cover.jpg" class="option question-5">
-						<img src="images/MarvinKMooney-cover.jpg" class="option question-6">
-					</div>
-
+					</div>	
 					<div class="col-lg-2 col-sm-6">
-						<img src="images/TheresAWocketInMyPocket-cover.jpg" class="option question-1">
-						<img src="images/GreenEggsandHam-cover.jpg" class="option question-2">
-						<img src="images/TheLorax-cover.jpg" class="option question-3">
-						<img src="images/MrBrownCanMoo-cover.jpg" class="option question-4">
-						<img src="images/YoureOnlyOldOnce-cover.jpg" class="option question-5">
-						<img src="images/OhTheThinksYouCanThink-cover.jpg" class="option question-6">
+						<img src="images/GreenEggsandHam-cover.jpg" class="option question-2" id="correct-2">
 					</div>
 				</div>
+				<div class="row question-3">
+					<div class="col-lg-2 col-lg-offset-2 col-sm-6">
+						<img src="images/OhThePlaces-cover.jpg" class="option question-3" id="correct-3">
+					</div>	
+					<div class="col-lg-2 col-sm-6">
+						<img src="images/ICanReadWithMyEyesShut-cover.jpg" class="option question-3">
+					</div>	
+					<div class="col-lg-2 col-sm-6">
+						<img src="images/TheFootBook-cover.jpg" class="option question-3">
+					</div>	
+					<div class="col-lg-2 col-sm-6">
+						<img src="images/TheLorax-cover.jpg" class="option question-3">
+					</div>	
+				</div>
+				<div class="row question-4">
+					<div class="col-lg-2 col-lg-offset-2 col-sm-6">
+						<img src="images/IfIRanTheZoo-cover.jpg" class="option question-4">
+					</div>	
+					<div class="col-lg-2 col-sm-6">
+						<img src="images/HowTheGrinchStoleChristmas-cover.jpg" class="option question-4">
+					</div>	
+					<div class="col-lg-2 col-sm-6">
+						<img src="images/OneFishTwoFish.jpg" class="option question-4" id="correct-4">
+					</div>	
+					<div class="col-lg-2 col-sm-6">
+						<img src="images/MrBrownCanMoo-cover.jpg" class="option question-4">
+					</div>	
+				</div>	
+				<div class="row question-5">
+					<div class="col-lg-2 col-lg-offset-2 col-sm-6">
+						<img src="images/Daisy-HeadMayzie-cover.jpg" class="option question-5">
+					</div>	
+					<div class="col-lg-2 col-sm-6">
+						<img src="images/HortonHatchesTheEgg-cover.jpg" class="option question-5">
+					</div>	
+					<div class="col-lg-2 col-sm-6">
+						<img src="images/YoureOnlyOldOnce-cover.jpg" class="option question-5">
+					</div>	
+					<div class="col-lg-2 col-sm-6">
+						<img src="images/HappyBirthday-cover.jpg" class="option question-5" id="correct-5">
+					</div>	
+				</div>	
+				<div class="row question-6">
+					<div class="col-lg-2 col-lg-offset-2 col-sm-6">
+						<img src="images/AndToThinkThatISawIt-cover.jpg" class="option question-6">
+					</div>	
+					<div class="col-lg-2 col-sm-6">
+						<img src="images/HortonHearsAWho-cover.jpg" class="option question-6" id="correct-6">
+					</div>	
+					<div class="col-lg-2 col-sm-6">
+						<img src="images/MarvinKMooney-cover.jpg" class="option question-6">
+					</div>	
+					<div class="col-lg-2 col-sm-6">
+						<img src="images/IfIRanTheCircus-cover.jpg" class="option question-6">
+					</div>		
+				</div>-->	
 			</div>
 			<div>
-				<p class="counter">2 of 6 correct!</p>
+				<div class="feedBack">
+					<h4 class="feedBackPos">CORRECT!</h4>
+					<h4 class="feedBackNeg">INCORRECT!</h4>
+					<button class="nextQuestion">Next</button>
+				</div>
+				<p class="counter"><span id="count">0</span> of 6 correct!</p>
 				<div class="row">
 					<div class="col-md-10 ansProgress">
 						<div class="col-md-2">
-							<img src="images/TheCatInTheHat.jpg" class="answer">
+							<img src="images/TheCatInTheHat.jpg" class="answer hidden" id="ans1">
 						</div>
 
 						<div class="col-md-2">
-							<img src="images/GreenEggsandHam-cover.jpg" class="answer">
+							<img src="images/GreenEggsandHam-cover.jpg" class="answer hidden"  id="ans2">
 						</div>
 
 						<div class="col-md-2">
-							<div>
-								<div class="incorrect">
-									<img src="images/OhThePlaces-cover.jpg" class="answer" id="fade">
-								</div>
-							</div>
+							<img src="images/OhThePlaces-cover.jpg" class="answer hidden" id="ans3">
 						</div>
 
 						<div class="col-md-2">
-							<img src="images/OneFishTwoFish.jpg" class="answer hidden">
+							<img src="images/OneFishTwoFish.jpg" class="answer hidden" id="ans4">
 						</div>
 
 						<div class="col-md-2">
-							<img src="images/HappyBirthday-cover.jpg" class="answer hidden">
+							<img src="images/HappyBirthday-cover.jpg" class="answer hidden" id="ans5">
 						</div>
 
 						<div class="col-md-2">
-							<img src="images/HortonHearsAWho-cover.jpg" class="answer hidden">
+							<img src="images/HortonHearsAWho-cover.jpg" class="answer hidden" id="ans6">
 						</div>
 					</div>
 				</div>
