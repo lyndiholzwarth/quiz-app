@@ -36,6 +36,8 @@ var question2 = {
 			option3:"images/OhSayCanYouSay-cover.jpg",
 			option4:"images/GreenEggsandHam-cover.jpg",},
 		answer: 4,
+		answerImage:"images/GreenEggsandHam-cover.jpg",
+		answerSlot: 2
 	};
 
 var question3 = {
@@ -46,6 +48,8 @@ var question3 = {
 			option3:"images/TheFootBook-cover.jpg",
 			option4:"images/TheLorax-cover.jpg",},
 		answer: 1,
+		answerImage:"images/OhThePlaces-cover.jpg",
+		answerSlot: 3,
 	};
 
 var question4 = {
@@ -56,6 +60,8 @@ var question4 = {
 			option3:"images/OneFishTwoFish.jpg",
 			option4:"images/MrBrownCanMoo-cover.jpg",},
 		answer: 3,
+		answerImage:"images/OneFishTwoFish.jpg",
+		answerSlot:4,
 	};
 
 var question5 = {
@@ -66,6 +72,8 @@ var question5 = {
 			option3:"images/HortonHatchesTheEgg-cover.jpg",
 			option4:"images/HappyBirthday-cover.jpg",},
 		answer: 4,
+		answerImage:"images/HappyBirthday-cover.jpg", 
+		answerSlot:5,
 	};
 
 var question6 = {
@@ -76,36 +84,29 @@ var question6 = {
 			option3:"images/MarvinKMooney-cover.jpg",
 			option4:"images/IfIRanTheCircus-cover.jpg",},
 		answer: 2,
+		answerImage:"images/HortonHearsAWho-cover.jpg",
+		answerSlot: 6,
 	};
 
 
-var quiz = [question1, question2, question3, question4, question5, question6]
+var quiz = {question1, question2, question3, question4, question5, question6}
 
-function newQuestion(question){
-	//default all options to incorrect
-	$('.option').addClass('incorrect');
+	function newQuestion(question){
+		//default all options to incorrect
+		$('.option').addClass('incorrect');
 
-	//set quote
-	$('.quote h2').text(question.quote);
+		//set quote
+		$('.quote h2').text(question.quote);
 
-	//set options
-	$('.option.1').attr('src', question.options.option1);
-	$('.option.2').attr('src', question.options.option2);
-	$('.option.3').attr('src', question.options.option3);
-	$('.option.4').attr('src', question.options.option4);
+		//set options
+		$('.option.1').attr('src', question.options.option1);
+		$('.option.2').attr('src', question.options.option2);
+		$('.option.3').attr('src', question.options.option3);
+		$('.option.4').attr('src', question.options.option4);
 
-	//add correct flag to answer
-	$('.option.' + question.answer).attr('id', 'correct').removeClass('incorrect');
-};
-
-// var answerImage = {
-// 	cover1:"images/DidIEverTellYou-cover.jpg",
-// 	cover2:"images/GreenEggsandHam-cover.jpg",
-// 	cover3:"images/OhThePlaces-cover.jpg",
-// 	cover4:"images/OneFishTwoFish.jpg",
-// 	cover5:"images/HappyBirthday-cover.jpg",  
-// 	cover6:"images/HortonHearsAWho-cover.jpg",  
-//  }; 
+		//add correct flag to answer
+		$('.option.' + question.answer).attr('id', 'correct').removeClass('incorrect');
+	};
 
 //evaluate if correct answer is clicked
 	function evaluateGuess(question){
@@ -128,16 +129,16 @@ function newQuestion(question){
 		//only allow one entry somehow
 	};
 
-newQuestion(quiz[0]);
-evaluateGuess(quiz[0]);
+newQuestion(quiz.question1);
+evaluateGuess(quiz.question1);
 //loadNext();
 
 
 //for all the question within quiz do this... (after 6 stop) 
  	function loadNext(){
 		$('.feedBack').on('click','.nextQuestion',function(event){
-		 	newQuestion(quiz[1]);
-			evaluateGuess(quiz[1]);
+			newQuestion(quiz.question2);
+			evaluateGuess(quiz.question2);
 			$('.feedBackPos').hide();
 			$('.feedBackNeg').hide();
 		    $('.nextQuestion').hide();
