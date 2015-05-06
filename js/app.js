@@ -89,7 +89,7 @@ var question6 = {
 	};
 
 
-var quiz = {question1, question2, question3, question4, question5, question6}
+var quiz = [question1, question2, question3, question4, question5, question6];
 
 	function newQuestion(question){
 		//default all options to incorrect
@@ -129,16 +129,29 @@ var quiz = {question1, question2, question3, question4, question5, question6}
 		//only allow one entry somehow
 	};
 
-newQuestion(quiz.question1);
-evaluateGuess(quiz.question1);
+newQuestion(question1);
+evaluateGuess(question1);
 //loadNext();
-
 
 //for all the question within quiz do this... (after 6 stop) 
  	function loadNext(){
-		$('.feedBack').on('click','.nextQuestion',function(event){
-			newQuestion(quiz.question2);
-			evaluateGuess(quiz.question2);
+		$('.feedBack').on('click','.nextQuestion',function(){
+			// var arrayLength = quiz.length;
+			// thisStatement=true
+			// for (var i = 0; i < quiz.length; i++){
+			// 	if((i++)<arrayLength){
+			// 		newQuestion(quiz[i]);
+			// 		evaluateGuess(quiz[i]);
+			// 		console.log(quiz[i]);
+			// 		thisStatement=true;
+			// 		break;
+			// 	};
+			// };
+
+			// newQuestion(quiz[i++]);
+			// evaluateGuess(quiz[i++]);}
+			newQuestion(quiz[1]);
+			evaluateGuess(quiz[1]);		
 			$('.feedBackPos').hide();
 			$('.feedBackNeg').hide();
 		    $('.nextQuestion').hide();
@@ -148,8 +161,21 @@ evaluateGuess(quiz.question1);
 loadNext();
 
 
-	
-
 });
 
-//reload: when the question number is 1-5, hide current question and load the next question ======= move to the next var in the array
+
+// for (var i = 0; i < excludeMe.length; i++) {
+//     if (needsExclusions.indexOf(excludeMe[i]) !== -1) {
+//         someFlag = false;        
+//         break;
+//     }
+
+// //reload: when the question number is 1-5, hide current question and load the next question ======= move to the next var in the array
+
+
+// var myStringArray = ["Hello","World"];
+// var arrayLength = myStringArray.length;
+// for (var i = 0; i < arrayLength; i++) {
+//     alert(myStringArray[i]);
+//     //Do something
+// }
