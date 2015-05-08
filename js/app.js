@@ -103,7 +103,7 @@ var quiz = [question1, question2, question3, question4, question5, question6];
 		//correct answers
 		$('.question').on('click', '#correct', function(){
 			console.log("yay");
-			// $('.answer.' + question.answerSlot).attr('src', question.answerImage);
+			$('.answer.' + question.answerSlot).attr('src', question.answerImage);
 			var counter = document.getElementById('count');
 	    	counter.innerHTML++;
 	    	$('.feedBackPos').show();
@@ -112,7 +112,7 @@ var quiz = [question1, question2, question3, question4, question5, question6];
 		//incorrect answers
 		$('.question').on('click','.incorrect', function(){
 			console.log('NOOOO');
-			// $('.answer.'+ question.answerSlot).attr('src', question.answerImage).addClass('fade').parent().addClass('wrong');
+			$('.answer.'+ question.answerSlot).attr('src', question.answerImage).addClass('fade').parent().addClass('wrong');
 			$('.feedBackNeg').show();
 	    	$('.nextQuestion').show();
 		});
@@ -132,57 +132,42 @@ clickNumber = 0;
 	});
 
 function movingOn(){
-	var loadingNew=false;
-		console.log("opening: "+clickNumber);
-			if (clickNumber=1){
-				newQuestion(quiz[1]);
-				console.log("firstClick: "+clickNumber);
-				evaluateGuess(quiz[1]);
-				loadingNew=true;
-				clickNumber++;
-			}
-			else if (clickNumber=2){
-				newQuestion(quiz[2]);
-			 //    $('.option').removeAttr('id', 'correct');
-				// $('.feedBackPos').hide();
-				// $('.feedBackNeg').hide();
-				// i++
-			//	click++;
-				console.log("secondClick: "+clickNumber);
-				evaluateGuess(quiz[2]);
-				// loadingNew=true;
-				clickNumber++;
-			}
-			else if (i=3){
-				newQuestion(quiz[3]);
-			    $('.option').removeAttr('id', 'correct');
-				$('.feedBackPos').hide();
-				$('.feedBackNeg').hide();
-				evaluateGuess(quiz[3]);
-
-				// i++
-			//	click++;
-				// console.log("firstClick: "+i);
-			}
-			else if (i=4){
-				newQuestion(quiz[4]);
-			    $('.option').removeAttr('id', 'correct');
-				$('.feedBackPos').hide();
-				$('.feedBackNeg').hide();
-				evaluateGuess(quiz[4]);
-
-			}
-			else if (i=5){
-				newQuestion(quiz[5]);
-			    $('.option').removeAttr('id', 'correct');
-				$('.feedBackPos').hide();
-				$('.feedBackNeg').hide();
-				evaluateGuess(quiz[5]);
-			}
-			else if (i=6){
-				console.log("coding dance!")
-			}
-		};
+	console.log("opening: "+clickNumber);
+	if (clickNumber===0){
+		newQuestion(quiz[1]);
+		console.log("question2");
+		evaluateGuess(quiz[1]);
+		// loadingNew=true;
+		clickNumber++;
+	}
+	else if (clickNumber===1){
+		newQuestion(quiz[2]);
+		console.log("question3");
+		evaluateGuess(quiz[2]);
+		// loadingNew=true;
+		clickNumber++;
+	}
+	else if (clickNumber===2){
+		newQuestion(quiz[3]);
+		console.log("question4");
+		evaluateGuess(quiz[3]);
+		clickNumber++;
+	}
+	else if (clickNumber===3){
+		newQuestion(quiz[4]);
+		console.log("question5");
+		evaluateGuess(quiz[4]);
+		clickNumber++;
+	}
+	else if (clickNumber===4){
+		newQuestion(quiz[5]);
+		console.log("question6");
+		evaluateGuess(quiz[5]);
+	}
+	else{
+		console.log("coding dance!")
+	}
+};
 
 
 // movingOn();
