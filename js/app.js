@@ -1,21 +1,11 @@
 $(document).ready(function(){
-//ask questions 1-6 with answer options
+	//no feedback showing yet
 	$('.feedBackPos').hide();
 	$('.feedBackNeg').hide();
 	$('.nextQuestion').hide();
-// 	$('.question-1').show();
-// 	$('.question-2').hide();
-// 	$('.question-3').hide();
-// 	$('.question-4').hide();
-// 	$('.question-5').hide();
-// 	$('.question-6').hide();
-// 	$('.options-1').show();
-// 	$('.options-2').hide();
-// 	$('.options-3').hide();
-// 	$('.options-4').hide();
-// 	$('.options-5').hide();
-// 	$('.options-6').hide();
 
+
+//questions 1-6
 var question1 = {
 		quote: "I know it is wet and the sun is not sunny, but we can have lots of good fun that is funny.",
 		options: {
@@ -37,7 +27,7 @@ var question2 = {
 			option4:"images/GreenEggsandHam-cover.jpg",},
 		answer: 4,
 		answerImage:"images/GreenEggsandHam-cover.jpg",
-		answerSlot: 2
+		answerSlot: 2,
 	};
 
 var question3 = {
@@ -88,9 +78,9 @@ var question6 = {
 		answerSlot: 6,
 	};
 
-
+//array to run functions
 var quiz = [question1, question2, question3, question4, question5, question6];
-
+	
 	function newQuestion(question){
 		//default all options to incorrect
 		$('.option').addClass('incorrect');
@@ -111,57 +101,113 @@ var quiz = [question1, question2, question3, question4, question5, question6];
 //evaluate if correct answer is clicked
 	function evaluateGuess(question){
 		//correct answers
-		$('#correct').click(function(){
+		$('.question').on('click', '#correct', function(){
 			console.log("yay");
-			$('.answer.' + question.answerSlot).attr('src', question.answerImage);
+			// $('.answer.' + question.answerSlot).attr('src', question.answerImage);
 			var counter = document.getElementById('count');
 	    	counter.innerHTML++;
 	    	$('.feedBackPos').show();
 	    	$('.nextQuestion').show();
 		});
 		//incorrect answers
-		$('.incorrect').click(function(){
+		$('.question').on('click','.incorrect', function(){
 			console.log('NOOOO');
-			$('.answer.'+ question.answerSlot).attr('src', question.answerImage).parent().addClass('wrong')
+			// $('.answer.'+ question.answerSlot).attr('src', question.answerImage).addClass('fade').parent().addClass('wrong');
 			$('.feedBackNeg').show();
 	    	$('.nextQuestion').show();
 		});
 		//only allow one entry somehow
 	};
 
-newQuestion(question1);
-evaluateGuess(question1);
+newQuestion(quiz[0]);
+evaluateGuess(quiz[0]);
 //loadNext();
-
+clickNumber = 0;
 //for all the question within quiz do this... (after 6 stop) 
- 	function loadNext(){
-		$('.feedBack').on('click','.nextQuestion',function(){
-			// var arrayLength = quiz.length;
-			// thisStatement=true
-			// for (var i = 0; i < quiz.length; i++){
-			// 	if((i++)<arrayLength){
-			// 		newQuestion(quiz[i]);
-			// 		evaluateGuess(quiz[i]);
-			// 		console.log(quiz[i]);
-			// 		thisStatement=true;
-			// 		break;
-			// 	};
-			// };
+	$('.feedBack').on('click','.nextQuestion',function(){
+		$('.option').removeAttr('id', 'correct');
+		$('.feedBackPos').hide();
+		$('.feedBackNeg').hide();
+		movingOn();	
+	});
 
-			// newQuestion(quiz[i++]);
-			// evaluateGuess(quiz[i++]);}
-			newQuestion(quiz[1]);
-			evaluateGuess(quiz[1]);		
-			$('.feedBackPos').hide();
-			$('.feedBackNeg').hide();
-		    $('.nextQuestion').hide();
-		});
-	};
+function movingOn(){
+	var loadingNew=false;
+		console.log("opening: "+clickNumber);
+			if (clickNumber=1){
+				newQuestion(quiz[1]);
+				console.log("firstClick: "+clickNumber);
+				evaluateGuess(quiz[1]);
+				loadingNew=true;
+				clickNumber++;
+			}
+			else if (clickNumber=2){
+				newQuestion(quiz[2]);
+			 //    $('.option').removeAttr('id', 'correct');
+				// $('.feedBackPos').hide();
+				// $('.feedBackNeg').hide();
+				// i++
+			//	click++;
+				console.log("secondClick: "+clickNumber);
+				evaluateGuess(quiz[2]);
+				// loadingNew=true;
+				clickNumber++;
+			}
+			else if (i=3){
+				newQuestion(quiz[3]);
+			    $('.option').removeAttr('id', 'correct');
+				$('.feedBackPos').hide();
+				$('.feedBackNeg').hide();
+				evaluateGuess(quiz[3]);
 
-loadNext();
+				// i++
+			//	click++;
+				// console.log("firstClick: "+i);
+			}
+			else if (i=4){
+				newQuestion(quiz[4]);
+			    $('.option').removeAttr('id', 'correct');
+				$('.feedBackPos').hide();
+				$('.feedBackNeg').hide();
+				evaluateGuess(quiz[4]);
+
+			}
+			else if (i=5){
+				newQuestion(quiz[5]);
+			    $('.option').removeAttr('id', 'correct');
+				$('.feedBackPos').hide();
+				$('.feedBackNeg').hide();
+				evaluateGuess(quiz[5]);
+			}
+			else if (i=6){
+				console.log("coding dance!")
+			}
+		};
 
 
-});
+// movingOn();
+// movingOn();
+// movingOn();
+// movingOn();
+// movingOn();
+// movingOn();
+
+
+
+
+
+		// $('.feedBack').on('click','.nextQuestion',function(){
+		//     $('.option').removeAttr('id', 'correct');
+		// 	newQuestion(quiz[2]);
+		// 	$('.feedBackPos').hide();
+		// 	$('.feedBackNeg').hide();
+		//     $('.nextQuestion').hide();
+		// 	});
+
+//evaluateGuess(quiz[2]);
+
+
+ });
 
 
 // for (var i = 0; i < excludeMe.length; i++) {
