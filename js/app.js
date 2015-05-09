@@ -101,18 +101,20 @@ var quiz = [question1, question2, question3, question4, question5, question6];
 //evaluate if correct answer is clicked
 	function evaluateGuess(question){
 		//correct answers
-		$('.question').on('click', '#correct', function(){
+		$('#correct').bind('click', function(){
 			console.log("yay");
 			$('.answer.' + question.answerSlot).attr('src', question.answerImage);
-			var counter = document.getElementById('count');
+			// $('.answer').hide();
+			counter = document.getElementById('count');
 	    	counter.innerHTML++;
 	    	$('.feedBackPos').show();
 	    	$('.nextQuestion').show();
 		});
 		//incorrect answers
-		$('.question').on('click','.incorrect', function(){
+		$('.incorrect').bind('click', function(){
 			console.log('NOOOO');
-			$('.answer.'+ question.answerSlot).attr('src', question.answerImage).addClass('fade').parent().addClass('wrong');
+			$('.answer.'+ question.answerSlot).attr('src', question.answerImage).addClass('fade').siblings().removeClass('hidden');
+			// $('.answer').hide();
 			$('.feedBackNeg').show();
 	    	$('.nextQuestion').show();
 		});
@@ -121,14 +123,20 @@ var quiz = [question1, question2, question3, question4, question5, question6];
 
 newQuestion(quiz[0]);
 evaluateGuess(quiz[0]);
-//loadNext();
+
 clickNumber = 0;
+
 //for all the question within quiz do this... (after 6 stop) 
-	$('.feedBack').on('click','.nextQuestion',function(){
+	$('.feedBack').on('click','.nextQuestion',function(){	
+		$('.answer').show();
+		$('#correct').unbind('click');
+		$('.incorrect').unbind('click');
 		$('.option').removeAttr('id', 'correct');
 		$('.feedBackPos').hide();
 		$('.feedBackNeg').hide();
+		$('.nextQuestion').hide();
 		movingOn();	
+		clickNumber++;
 	});
 
 function movingOn(){
@@ -137,76 +145,37 @@ function movingOn(){
 		newQuestion(quiz[1]);
 		console.log("question2");
 		evaluateGuess(quiz[1]);
-		// loadingNew=true;
-		clickNumber++;
 	}
 	else if (clickNumber===1){
 		newQuestion(quiz[2]);
 		console.log("question3");
 		evaluateGuess(quiz[2]);
-		// loadingNew=true;
-		clickNumber++;
 	}
 	else if (clickNumber===2){
 		newQuestion(quiz[3]);
 		console.log("question4");
 		evaluateGuess(quiz[3]);
-		clickNumber++;
 	}
 	else if (clickNumber===3){
 		newQuestion(quiz[4]);
 		console.log("question5");
 		evaluateGuess(quiz[4]);
-		clickNumber++;
 	}
 	else if (clickNumber===4){
 		newQuestion(quiz[5]);
 		console.log("question6");
 		evaluateGuess(quiz[5]);
 	}
-	else{
-		console.log("coding dance!")
+	else if (clickNumber>=5){
+		console.log("coding dance!");
+		function endCount(){
+			counter = document.getElementById('count').innerText;
+			alert("You got "+counter+" of 6 correct!");
+		};
+		endCount();
 	}
 };
 
 
-// movingOn();
-// movingOn();
-// movingOn();
-// movingOn();
-// movingOn();
-// movingOn();
-
-
-
-
-
-		// $('.feedBack').on('click','.nextQuestion',function(){
-		//     $('.option').removeAttr('id', 'correct');
-		// 	newQuestion(quiz[2]);
-		// 	$('.feedBackPos').hide();
-		// 	$('.feedBackNeg').hide();
-		//     $('.nextQuestion').hide();
-		// 	});
-
-//evaluateGuess(quiz[2]);
-
-
  });
 
-
-// for (var i = 0; i < excludeMe.length; i++) {
-//     if (needsExclusions.indexOf(excludeMe[i]) !== -1) {
-//         someFlag = false;        
-//         break;
-//     }
-
-// //reload: when the question number is 1-5, hide current question and load the next question ======= move to the next var in the array
-
-
-// var myStringArray = ["Hello","World"];
-// var arrayLength = myStringArray.length;
-// for (var i = 0; i < arrayLength; i++) {
-//     alert(myStringArray[i]);
-//     //Do something
-// }
