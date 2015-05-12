@@ -99,33 +99,38 @@ var quiz = [question1, question2, question3, question4, question5, question6];
 	};
 
 //evaluate if correct answer is clicked
-	function evaluateGuess(question){
-		$('.option').one('click', function(){
-			$(this).addClass('selected')
-		});
+
+		// $('.option').on('click', function(){
+		// 	$(this).toggleClass('selected');
+		// });
 		
-		//correct answers
-		// $('#correct').bind('click', function(){
-		// 	console.log("yay");
-		// 	$('.answer.' + question.answerSlot).attr('src', question.answerImage);
-		// 	// $('.answer').hide();
-		// 	counter = document.getElementById('count');
-	 //    	counter.innerHTML++;
-	 //    	$('.feedBackPos').show();
-	 //    	$('.nextQuestion').show();
-	 //    	$('.submitButton').hide();
-		// });
-		// //incorrect answers
-		// $('.incorrect').bind('click', function(){
-		// 	console.log('NOOOO');
-		// 	$('.answer.'+ question.answerSlot).attr('src', question.answerImage).addClass('fade').siblings().removeClass('hidden');
-		// 	// $('.answer').hide();
-		// 	$('.feedBackNeg').show();
-	 //    	$('.nextQuestion').show();
-	 //    	$('.submitButton').hide();
-		// });
-		//only allow one entry somehow
+		//select one image at a time. If alternate image is selected remove class from first image, add to second image
+
+	function evaluateGuess(question){
+		$('.submitButton').click(function(){
+			//correct answers
+			$('#correct').bind('click', function(){
+				console.log("yay");
+				$('.answer.' + question.answerSlot).attr('src', question.answerImage);
+				// $('.answer').hide();
+				counter = document.getElementById('count');
+		    	counter.innerHTML++;
+		    	$('.feedBackPos').show();
+		    	$('.nextQuestion').show();
+		    	$('.submitButton').hide();
+			});
+			// //incorrect answers
+			$('.incorrect').bind('click', function(){
+				console.log('NOOOO');
+				$('.answer.'+ question.answerSlot).attr('src', question.answerImage).addClass('fade').siblings().removeClass('hidden');
+				// $('.answer').hide();
+				$('.feedBackNeg').show();
+		    	$('.nextQuestion').show();
+		    	$('.submitButton').hide();
+			});
+		});
 	};
+		//only allow one entry somehow
 
 newQuestion(quiz[0]);
 evaluateGuess(quiz[0]);

@@ -68,7 +68,7 @@ h2{
 	display: inline-block;
 }
 
-#selected{
+.selected{
 		background-color: #3498db;
 }
 
