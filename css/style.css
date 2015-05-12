@@ -166,7 +166,7 @@ button{
 	position: absolute;
 }
 
-.hidden{
+.hidden, .feedBackPos, .feedBackNeg, .nextQuestion{
 	display: none;
 }
 

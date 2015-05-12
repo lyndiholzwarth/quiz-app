@@ -1,9 +1,6 @@
 $(document).ready(function(){
-	//no feedback showing yet
-	$('.feedBackPos').hide();
-	$('.feedBackNeg').hide();
-	$('.nextQuestion').hide();
 
+//-------Data--------
 
 //questions 1-6
 var question1 = {
@@ -79,8 +76,19 @@ var question6 = {
 	};
 
 //array to run functions
-var quiz = [question1, question2, question3, question4, question5, question6];
+var quiz = {
+	1: question1,
+	2: question2, 
+	3: question3, 
+	4: question4, 
+	5: question5, 
+	6: question6
+};
 	
+
+//-------functions--------
+
+
 	function newQuestion(question){
 		//default all options to incorrect
 		$('.option').addClass('incorrect');
@@ -98,48 +106,50 @@ var quiz = [question1, question2, question3, question4, question5, question6];
 		$('.option.' + question.answer).attr('id', 'correct').removeClass('incorrect');
 	};
 
-//evaluate if correct answer is clicked
-
-		// $('.option').on('click', function(){
-		// 	$(this).toggleClass('selected');
-		// });
-		
-		//select one image at a time. If alternate image is selected remove class from first image, add to second image
-
+	//evaluate if correct answer is clicked
 	function evaluateGuess(question){
+		//correct answers
+		$('#correct').bind('click', function(){
+			console.log("yay");
+			correct = true;
+			console.log("correct? " + correct);
+			$('.option').removeClass('selected');
+		 	$(this).addClass('selected');
+		});
+		// //incorrect answers
+		$('.incorrect').bind('click', function(){
+			console.log('NOOOO');
+			correct = false;
+			console.log("correct? " + correct);
+			$('.option').removeClass('selected');
+			$(this).addClass('selected');
+		});
+
 		$('.submitButton').click(function(){
-			//correct answers
-			$('#correct').bind('click', function(){
-				console.log("yay");
+			if (correct==true){
+				//only allow one entry somehow
 				$('.answer.' + question.answerSlot).attr('src', question.answerImage);
-				// $('.answer').hide();
+						// $('.answer').hide();
 				counter = document.getElementById('count');
 		    	counter.innerHTML++;
 		    	$('.feedBackPos').show();
 		    	$('.nextQuestion').show();
 		    	$('.submitButton').hide();
-			});
-			// //incorrect answers
-			$('.incorrect').bind('click', function(){
-				console.log('NOOOO');
+			}
+			else if (correct==false){
 				$('.answer.'+ question.answerSlot).attr('src', question.answerImage).addClass('fade').siblings().removeClass('hidden');
 				// $('.answer').hide();
 				$('.feedBackNeg').show();
 		    	$('.nextQuestion').show();
 		    	$('.submitButton').hide();
-			});
+			}
 		});
 	};
-		//only allow one entry somehow
 
-newQuestion(quiz[0]);
-evaluateGuess(quiz[0]);
-
-clickNumber = 0;
-
-//for all the question within quiz do this... (after 6 stop) 
+	//for all the question within quiz do this... (after 6 stop) 
 	$('.feedBack').on('click','.nextQuestion',function(){	
 		$('.answer').show();
+		$('.submitButton').unbind('click');
 		$('#correct').unbind('click');
 		$('.incorrect').unbind('click');
 		$('.option').removeAttr('id', 'correct');
@@ -147,46 +157,35 @@ clickNumber = 0;
 		$('.feedBackNeg').hide();
 		$('.nextQuestion').hide();
 		$('.submitButton').show();
+		questionCounter++;
 		movingOn();	
-		clickNumber++;
 	});
 
-function movingOn(){
-	console.log("opening: "+clickNumber);
-	if (clickNumber===0){
-		newQuestion(quiz[1]);
-		console.log("question2");
-		evaluateGuess(quiz[1]);
-	}
-	else if (clickNumber===1){
-		newQuestion(quiz[2]);
-		console.log("question3");
-		evaluateGuess(quiz[2]);
-	}
-	else if (clickNumber===2){
-		newQuestion(quiz[3]);
-		console.log("question4");
-		evaluateGuess(quiz[3]);
-	}
-	else if (clickNumber===3){
-		newQuestion(quiz[4]);
-		console.log("question5");
-		evaluateGuess(quiz[4]);
-	}
-	else if (clickNumber===4){
-		newQuestion(quiz[5]);
-		console.log("question6");
-		evaluateGuess(quiz[5]);
-	}
-	else if (clickNumber>=5){
-		console.log("coding dance!");
-		function endCount(){
-			counter = document.getElementById('count').innerText;
-			alert("You got "+counter+" of 6 correct!");
-		};
-		endCount();
-	}
-};
+	function movingOn(){
+		console.log("question counter "+questionCounter);
+		// console.log("opening: "+clickNumber);
+		if (questionCounter<=6){
+			console.log(quiz[questionCounter]['quote']);
+			newQuestion(quiz[questionCounter]);
+			evaluateGuess(quiz[questionCounter]);
+		}
+		else if (questionCounter>6){
+			console.log("coding dance!");
+			function endCount(){
+				counter = document.getElementById('count').innerText;
+				alert("You got "+counter+" of 6 correct!");
+			};
+			endCount();
+		}
+	};
+
+//------running the quiz-------
+
+correct = false	;
+questionCounter = 1;
+movingOn();
+
+
 
 
  });
