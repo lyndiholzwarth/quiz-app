@@ -82,7 +82,7 @@ var quiz = {
 	3: question3, 
 	4: question4, 
 	5: question5, 
-	6: question6
+	6: question6,
 };
 	
 
@@ -124,12 +124,11 @@ var quiz = {
 			$('.option').removeClass('selected');
 			$(this).addClass('selected');
 		});
-
+// take selected item and put it in the answer box area. mark as correct or incorrect
 		$('.submitButton').click(function(){
+			answerClicked = document.getElementsByClassName('selected')[0].getAttribute('src');
 			if (correct==true){
-				//only allow one entry somehow
-				$('.answer.' + question.answerSlot).attr('src', question.answerImage);
-						// $('.answer').hide();
+				$('.answer.' + question.answerSlot).attr('src', answerClicked);
 				counter = document.getElementById('count');
 		    	counter.innerHTML++;
 		    	$('.feedBackPos').show();
@@ -137,8 +136,7 @@ var quiz = {
 		    	$('.submitButton').hide();
 			}
 			else if (correct==false){
-				$('.answer.'+ question.answerSlot).attr('src', question.answerImage).addClass('fade').siblings().removeClass('hidden');
-				// $('.answer').hide();
+				$('.answer.' + question.answerSlot).attr('src', answerClicked).addClass('fade').siblings().removeClass('hidden');
 				$('.feedBackNeg').show();
 		    	$('.nextQuestion').show();
 		    	$('.submitButton').hide();
