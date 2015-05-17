@@ -110,39 +110,44 @@ var quiz = {
 	function evaluateGuess(question){
 		//correct answers
 		$('#correct').bind('click', function(){
-			console.log("yay");
+			$('.submitButton').show();
 			correct = true;
-			console.log("correct? " + correct);
 			$('.option').removeClass('selected');
 		 	$(this).addClass('selected');
 		});
+
 		// //incorrect answers
 		$('.incorrect').bind('click', function(){
-			console.log('NOOOO');
+			$('.submitButton').show();
 			correct = false;
-			console.log("correct? " + correct);
 			$('.option').removeClass('selected');
 			$(this).addClass('selected');
 		});
-// take selected item and put it in the answer box area. mark as correct or incorrect
+
+
+	// selected item in the answer box area
 		$('.submitButton').click(function(){
 			answerClicked = document.getElementsByClassName('selected')[0].getAttribute('src');
+			//corrrect answer
 			if (correct==true){
 				$('.answer.' + question.answerSlot).attr('src', answerClicked);
 				counter = document.getElementById('count');
 		    	counter.innerHTML++;
-		    	$('.feedBackPos').show();
+		    	$('.feedBackText').show().text("CORRECT!");
 		    	$('.nextQuestion').show();
 		    	$('.submitButton').hide();
 			}
+
+			//incorrect answer
 			else if (correct==false){
 				$('.answer.' + question.answerSlot).attr('src', answerClicked).addClass('fade').siblings().removeClass('hidden');
-				$('.feedBackNeg').show();
+				$('.feedBackText').show().text("INCORRECT!");
 		    	$('.nextQuestion').show();
 		    	$('.submitButton').hide();
 			}
 		});
 	};
+
 
 	//for all the question within quiz do this... (after 6 stop) 
 	$('.feedBack').on('click','.nextQuestion',function(){	
@@ -150,40 +155,64 @@ var quiz = {
 		$('.submitButton').unbind('click');
 		$('#correct').unbind('click');
 		$('.incorrect').unbind('click');
-		$('.option').removeAttr('id', 'correct');
-		$('.feedBackPos').hide();
-		$('.feedBackNeg').hide();
+		$('.option').removeAttr('id', 'correct').removeClass('selected');
+		$('.feedBackText').hide();
 		$('.nextQuestion').hide();
-		$('.submitButton').show();
 		questionCounter++;
 		movingOn();	
 	});
 
+	//function to load next question
 	function movingOn(){
-		console.log("question counter "+questionCounter);
-		// console.log("opening: "+clickNumber);
+		$('.feedBackText').hide();
+		//after questions 1-5
 		if (questionCounter<=6){
-			console.log(quiz[questionCounter]['quote']);
 			newQuestion(quiz[questionCounter]);
 			evaluateGuess(quiz[questionCounter]);
 		}
+
+		//after question 6
 		else if (questionCounter>6){
-			console.log("coding dance!");
 			function endCount(){
+				//show final count, give replay option
+				$('.counter').hide();
 				counter = document.getElementById('count').innerText;
-				alert("You got "+counter+" of 6 correct!");
+				$('.feedBackText').show().text("You got "+counter+" of 6 correct!");
+				$('.submitButton').hide();
+				$('.replay').show();
 			};
+
 			endCount();
+
 		}
 	};
+
+	//replay Quiz
+	$('.replay').click(function(){
+		//reset quiz
+		correct=false;
+		questionCounter=1;
+		movingOn();
+
+		//correct items showing / hidden
+		$('.replay').hide();
+
+		//reset counter
+		counter = document.getElementById('count');
+		counter.innerHTML=0;
+		$('.counter').show();
+
+		//remove last game's answers
+		$('.answer').removeAttr('src', answerClicked).removeClass('fade').siblings().addClass('hidden');
+	});
+
+
 
 //------running the quiz-------
 
 correct = false	;
 questionCounter = 1;
 movingOn();
-
-
 
 
  });

@@ -1,6 +1,8 @@
 body{
 	background-color: #ffff33;
-	font-family: 'Architects Daughter', cursive;
+	font-family: 'Shadows Into Light Two', cursive;
+	letter-spacing: 2px;
+	font-weight: bold;
 }
 
 
@@ -21,11 +23,13 @@ body{
 
 h1{
 	font-size: 44px;
+	font-weight: bold;
 	text-align: center;
 	display: inline-block;
-	margin-left: 10px;
+	margin-left: 20px;
 	margin-right: 20px;
 	margin-top:30px;
+	color:#fff;
 }
 
 .quiz{
@@ -46,8 +50,7 @@ h1{
 }
 
 h2{
-	font-size: 32px;
-	font-family: 'Coming Soon', cursive;
+	font-size: 28px;
 	line-height: 1.5em;
 	font-weight: bolder;
 }
@@ -103,7 +106,9 @@ button{
 	-moz-box-shadow: 0px 1px 3px #666666;
 	box-shadow: 0px 1px 3px #666666;
 	color: #ffffff;
-	font-size: 16px;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 2.5px;
 	text-decoration: none;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -118,6 +123,11 @@ button{
 .nextQuestion{
 	padding-left: 28px;
 	padding-right: 28px;
+	background: #009933;
+}
+
+.replay{
+	background: #f12b15;
 }
 
 .counter{
@@ -166,7 +176,7 @@ button{
 	position: absolute;
 }
 
-.hidden, .feedBackPos, .feedBackNeg, .nextQuestion{
+.hidden, .feedBackText, .submitButton, .nextQuestion, .replay{
 	display: none;
 }
 
