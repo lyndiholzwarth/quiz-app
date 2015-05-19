@@ -91,7 +91,7 @@ var quiz = {
 
 	function newQuestion(question){
 		//default all options to incorrect
-		$('.option').addClass('incorrect');
+		$('.option').addClass('incorrect').css('cursor','pointer');
 
 		//set quote
 		$('.quote h2').text(question.quote);
@@ -108,31 +108,38 @@ var quiz = {
 
 	//evaluate if correct answer is clicked
 	function evaluateGuess(question){
+		var submitted=false;
 		//correct answers
 		$('#correct').bind('click', function(){
-			$('.submitButton').show();
-			correct = true;
-			$('.option').removeClass('selected');
-		 	$(this).addClass('selected');
+			if (submitted==false){
+				$('.submitButton').show();
+				correct = true;
+				$('.option').removeClass('selected');
+			 	$(this).addClass('selected');
+			 };
 		});
 
 		// //incorrect answers
 		$('.incorrect').bind('click', function(){
-			$('.submitButton').show();
-			correct = false;
-			$('.option').removeClass('selected');
-			$(this).addClass('selected');
+			if (submitted==false){
+				$('.submitButton').show();
+				correct = false;
+				$('.option').removeClass('selected');
+				$(this).addClass('selected');
+			};
 		});
 
 
 	// selected item in the answer box area
 		$('.submitButton').click(function(){
+			submitted=true;
 			answerClicked = document.getElementsByClassName('selected')[0].getAttribute('src');
+			$('.option').css('cursor','default')
 			//corrrect answer
 			if (correct==true){
 				$('.answer.' + question.answerSlot).attr('src', answerClicked);
-				counter = document.getElementById('count');
-		    	counter.innerHTML++;
+				answerCounter = document.getElementById('correctCount');
+		    	correctCount.innerHTML++;
 		    	$('.feedBackText').show().text("CORRECT!");
 		    	$('.nextQuestion').show();
 		    	$('.submitButton').hide();
@@ -175,11 +182,12 @@ var quiz = {
 		else if (questionCounter>6){
 			function endCount(){
 				//show final count, give replay option
-				$('.counter').hide();
-				counter = document.getElementById('count').innerText;
-				$('.feedBackText').show().text("You got "+counter+" of 6 correct!");
+				answerCounter = document.getElementById('correctCount').innerText;
+				console.log(document.getElementById('correctCount').innerText);
+				$('.feedBackText').show().text("You got "+answerCounter+" of 6 correct!");
 				$('.submitButton').hide();
 				$('.replay').show();
+				$('.counter').removeClass('visible').addClass('invisible');
 			};
 
 			endCount();
@@ -197,13 +205,13 @@ var quiz = {
 		//correct items showing / hidden
 		$('.replay').hide();
 
-		//reset counter
-		counter = document.getElementById('count');
-		counter.innerHTML=0;
-		$('.counter').show();
-
 		//remove last game's answers
 		$('.answer').removeAttr('src', answerClicked).removeClass('fade').siblings().addClass('hidden');
+
+		//reset counter
+		$('.counter').removeClass('invisible').addClass('visible');
+		answerCounter = document.getElementById('count');
+		correctCount.innerHTML=0;
 	});
 
 
